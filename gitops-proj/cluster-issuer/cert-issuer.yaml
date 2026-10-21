@@ -1,0 +1,18 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: "letsencrypt-prod"
+spec:
+  acme:
+    server: "https://acme-v02.api.letsencrypt.org/directory"
+    email: "mayorfaj@gmail.com"
+    privateKeySecretRef:
+      name: "letsencrypt-prod"
+    solvers:
+    - selector:
+        dnsZones:
+          - "mayorfaj.io"
+      dns01:
+        route53:
+          region: "eu-central-1"
+          hostedZoneID: "Z01976772CQW19RY2YSN8"
